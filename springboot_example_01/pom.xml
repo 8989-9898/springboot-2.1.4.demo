@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.ly</groupId>
-    <artifactId>springboot_exampe_01</artifactId>
+    <artifactId>springboot_example_01</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>springboot_exampe_01</name>
