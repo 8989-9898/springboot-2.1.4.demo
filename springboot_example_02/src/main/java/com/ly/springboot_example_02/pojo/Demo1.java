@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Component
 // 该注解默认读取 application.properties 或者application.yml 文件
 @ConfigurationProperties(prefix = "my")
-// 使用该注解自定从那个配置问价中获取信息
+// 使用该注解自定从那个配置问价中获取信息无法加载 .yml 的文件
 @PropertySource("classpath:my.properties")
 public class Demo1 {
 
