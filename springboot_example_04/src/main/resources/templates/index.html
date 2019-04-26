@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">Title33</title>
+</head>
+<body>
+
+<h1 th:text="${description}">没有启动thymeleaf时的值</h1>
+
+
+<table>
+    <tr>
+        <td th:text="${author.name}">默认的姓名</td>
+        <td th:text="${author.getAge()}">默认的年龄</td>
+        <td th:text="${author.msg}">默认的信息</td>
+    </tr>
+</table>
+</body>
+</html>
