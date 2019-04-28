@@ -1,0 +1,26 @@
+spring:
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: gm0408
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false
+    name: mysql
+
+logback:
+  appname: springboot_database_mybatis
+
+mybatis:
+  mapper-locations: classpath:com.ly.mapper/*.xml
+  type-aliases-package: com.ly.pojo
+  configuration:
+    # 配置驼峰命名规则，数据库的字段时 u_name 那么类的属性就是 uName ；
+    map-underscore-to-camel-case: true
+
+### 分页插件
+pagehelper:
+  helper-dialect: mysql
+  params: count=countSql
+  reasonable: false
+  support-methods-arguments: true
