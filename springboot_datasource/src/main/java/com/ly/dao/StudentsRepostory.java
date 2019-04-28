@@ -20,8 +20,8 @@ public interface StudentsRepostory extends JpaRepository<Students,Integer> {
 
 
     /**
-     * 根据用户名模糊查询
-     * @param name
+     * 根据用户名查询
+     * @param name 用户名
      * @return
      */
     List<Students> getFirstByName(String name);

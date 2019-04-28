@@ -27,14 +27,16 @@ public class DataJpaController {
     @Autowired
     public StudentsRepostory repostory;
 
-    @GetMapping("/{name}")
+    @GetMapping("name/{name}")
     public List<Students> likeByName(@PathVariable("name") String name){
+        System.out.println("传入参数："+name);
         // 该方法为自定义的方法，springboot-data-jpa会根据方法名的规则进行sql语句的字段生成进行查询
         return repostory.getFirstByName(name);
     }
 
     @GetMapping("/{id}")
     public Students getById(@PathVariable("id")Integer id){
+        System.out.println("传入参数："+id);
         // 该方法是实现的JpaRepository接口来的,获取一条数据
         return repostory.getOne(id);
     }
@@ -52,13 +54,30 @@ public class DataJpaController {
         return repostory.save(students);
     }
 
+    /**
+     * 进行分页排序和查询
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
     @GetMapping("/{pageNum}/{pageSize}")
-    public Page<Students> findPage(@PathVariable("pageNum") Integer pageNum, @PathVariable("pageSize") Integer pageSize){
-        Pageable page=new PageRequest(pageNum,pageSize,Sort.by(Sort.Order.desc("id")));
-
+    public Page<Students> findPage(@PathVariable("pageNum") Integer pageNum, @PathVariable("pageSize") Integer pageSize) {
+        // 分页和排序
+        Pageable page = new PageRequest(pageNum, pageSize, Sort.by(Sort.Order.desc("id")));
         return repostory.findAll(page);
     }
 
+
+    /**
+     * 修改该方法可以不写，使用添加方法传入id值就可以实现修改了。
+     * @param students
+     * @return
+     */
+    /*@PutMapping
+    public int update(Students students){
+        repostory.save(students);
+        return 0;
+    }*/
 
 
 }

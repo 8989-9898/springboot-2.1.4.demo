@@ -1,9 +1,11 @@
 package com.ly.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.rmi.server.UID;
 
 /**
  * @ProjectName: springboot_2.0.1
@@ -21,7 +23,12 @@ import java.io.Serializable;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+// 在返回数据的时候进行转json处理时使用
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Students implements Serializable {
+
+    private static final long serializableIsd=1L;
+
 
     // strategy 指定主键生产策略
     // generator 指定主键使用的生成器或者自己编写的序列
