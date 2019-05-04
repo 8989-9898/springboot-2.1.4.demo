@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.3.RELEASE</version>
+        <version>2.1.4.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.ly</groupId>
@@ -18,24 +18,24 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <spring-boot-admin.version>2.0.1</spring-boot-admin.version>
+        <spring-boot-admin.version>2.1.4</spring-boot-admin.version>
     </properties>
 
     <dependencies>
 
-        <!-- 在使用该依赖的时候spring-boot必须是 2.0.3.RELEASE -->
+        <!-- 在使用该依赖的时候spring-boot版本必须一致或者差别不大 -->
         <!-- 服务端：带UI界面 -->
         <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-starter-server</artifactId>
-            <version>2.0.0</version>
+            <version>2.1.4</version>
 
         </dependency>
         <!-- 客户端包 -->
         <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-starter-client</artifactId>
-            <version>2.0.0</version>
+            <version>2.1.4</version>
         </dependency>
         <!-- 安全认证 -->
         <dependency>
