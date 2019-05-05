@@ -15,22 +15,27 @@
     <description>使用actautor监测程序状态</description>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <spring-boot-admin.version>2.1.4</spring-boot-admin.version>
     </properties>
 
     <dependencies>
 
+        <!-- 在使用该依赖的时候spring-boot版本必须一致或者差别不大 -->
         <!-- 服务端：带UI界面 -->
         <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-starter-server</artifactId>
-            <version>2.0.0</version>
+            <version>2.1.4</version>
+
         </dependency>
         <!-- 客户端包 -->
         <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-starter-client</artifactId>
-            <version>2.0.0</version>
+            <version>2.1.4</version>
         </dependency>
         <!-- 安全认证 -->
         <dependency>
@@ -53,6 +58,31 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.projectreactor.addons/reactor-extra -->
+        <!--<dependency>
+            <groupId>io.projectreactor.addons</groupId>
+            <artifactId>reactor-extra</artifactId>
+            <version>3.2.2.RELEASE</version>
+            <scope>runtime</scope>
+        </dependency>-->
+
+
+        <!-- 在管理界面中与 JMX-beans 进行交互所需要被依赖的 JAR -->
+        <dependency>
+            <groupId>org.jolokia</groupId>
+            <artifactId>jolokia-core</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-dependencies</artifactId>
+            <version>${spring-boot-admin.version}</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -60,6 +90,16 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <!--想要通过info接口获取maven中的属性内容时需要-->
+                            <goal>
+                                build-info
+                            </goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
