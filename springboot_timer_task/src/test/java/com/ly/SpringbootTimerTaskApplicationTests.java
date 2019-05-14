@@ -1,4 +1,4 @@
-package com.l;
+package com.ly;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
