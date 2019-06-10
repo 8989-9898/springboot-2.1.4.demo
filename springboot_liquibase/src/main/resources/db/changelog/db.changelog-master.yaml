@@ -1,0 +1,49 @@
+databaseChangeLog:
+  # 支持 yaml 格式的 SQL 语法
+  # 设计表
+  - changeSet:
+      id: 1
+      author: lin
+      changes:
+        - createTable:
+            tableName: person
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+  # 插入信息
+  - changeSet:
+      id: 2
+      author: lin
+      changes:
+        - insert:
+            tableName: person
+            columns:
+              - column:
+                  name: first_name
+                  value: Marcel
+              - column:
+                  name: last_name
+                  value: Overdijk
+  # 同时也支持依赖外部SQL文件向数据库添加信息
+  - changeSet:
+      id: 3
+      author: lin
+      changes:
+        - sqlFile:
+            encoding: utf8
+            path: classpath:test.sql
