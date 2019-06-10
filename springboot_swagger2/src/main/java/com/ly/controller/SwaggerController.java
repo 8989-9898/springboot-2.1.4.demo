@@ -5,6 +5,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.boot.context.config.ConfigFileApplicationListener;
+import org.springframework.boot.env.PropertySourceLoader;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -20,7 +22,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/users")
 @Api(tags = "1.1",value = "测试swagger2")
 public class SwaggerController {
-
 
     @GetMapping
     @ApiOperation(value = "条件查询（DONE）")

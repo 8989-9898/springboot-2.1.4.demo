@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>十米聊天室</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/toastr.js/latest/toastr.min.js"></script>
+
+</head>
+<body>
+<label for="message_content">聊天室</label><textarea id="message_content" readonly="readonly"
+                                                  cols="57" rows="10">
+</textarea>
+<br/>
+<label for="in_user_name">用户姓名 &nbsp;</label><input id="in_user_name" value=""/>
+<button id="btn_join">加入聊天室</button>
+<button id="btn_exit">离开聊天室</button>
+<br/><br/>
+<label for="in_room_msg">群发消息 &nbsp;</label><input id="in_room_msg" value=""/>
+<button id="btn_send_all">发送消息</button>
+<hr/>
+好友聊天
+<br/>
+<label for="in_sender">发送者 &nbsp;</label><input id="in_sender" value=""/><br/>
+<label for="in_receive">接受者 &nbsp;</label><input id="in_receive" value=""/><br/>
+<label for="in_point_message">消息体 &nbsp;</label><input id="in_point_message" value=""/>
+<button id="btn_send_point">发送消息</button>
+</body>
+<script type="text/javascript">
+    toastr.options.positionClass = 'toast-top-right';
+    $(function () {
+        var wsUrl = "ws://localhost:8080/chatRoom/";
+        var ws = null;
+        $("#btn_join").click(function () {
+            var username = $("#in_user_name").val();
+            ws = new WebSocket(wsUrl + username);
+            ws.onopen = function (ev) {
+                console.log("建立websocket连接·········")
+            };
+            ws.onmessage = function (ev) {
+                // 接受从服务器发来的数据
+                $("#message_content").append(ev.data + "\n");
+            }
+            ws.onclose = function (ev) {
+                $("#message_content").append("用户[" + username + "]离开聊天室！\n");
+                console.log("关闭websocket连接······")
+            }
+        });
+
+        $("#btn_send_all").click(function () {
+            var message = $("#in_room_msg").val();
+            if (ws != null) {
+                ws.send(message);
+            }
+        });
+        $("#btn_exit").click(function () {
+            if (ws != null) {
+                ws.close();
+            }
+        });
+
+        $("#btn_send_point").click(function () {
+            var sender = $("#in_sender").val();
+            var receive = $("#in_receive").val();
+            var message = $("#in_point_message").val();
+            $.get("/chatRoom/" + sender + "/to/" + receive + "?message=" + message, function () {
+                toastr.success("发送成功······");
+            });
+        });
+
+    });
+</script>
+</html>

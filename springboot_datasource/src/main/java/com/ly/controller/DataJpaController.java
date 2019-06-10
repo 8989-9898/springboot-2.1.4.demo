@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * @ProjectName: springboot_2.0.1
+ * @ProjectName: springboot_2.1.4
  * @Package: com.ly.controller
  * @ClassName: DataJpaController
  * @Author: lin
