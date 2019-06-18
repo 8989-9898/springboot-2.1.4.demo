@@ -1,0 +1,61 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    name: mysql_test
+    # type: com.alibaba.druid.pool.DruidDataSource
+
+    master:
+      # 基本属性使用的是 HikariPool 作为数据库连接池
+      jdbcurl: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+      username: root
+      password: gm0408
+      driver-class-name: com.mysql.cj.jdbc.Driver
+    slave:
+      # 基本属性使用的是 druid 作为数据库连接池
+      url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+      username: root
+      password: gm0408
+      driver-class-name: com.mysql.cj.jdbc.Driver
+    # 数据层的接口定义规则
+    read: get,select,count,list,query,find
+    write: add,create,update,delete,remove,insert
+    # 相关 druid 配置
+    druid:
+      # 监控统计拦截的filters
+      filters: stat
+      # driver-class-name: com.mysql.cj.jdbc.Driver
+      # 基本属性
+      # url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+      # username: root
+      # password: gm0408
+      # 配置初始化大小
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      # 获取连接的等待超时间
+      max-wait: 60000
+      # 时隔多少进行一次检测，检测需要关闭的空闲连接
+      time-between-eviction-runs-millis: 60000
+      # 一个连接在池中最小的生存时间
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      # 打开PSCache，并指定每个连接上PSCache的大小，oracle设为 true ，mysql 设为 false 。分表分库较多建议设为 false
+      pool-prepared-statements: false
+      max-pool-prepared-statement-per-connection-size: 20
+
+mybatis:
+  # 配置xml文件的位置
+  mapper-locations: classpath:mapper/*.xml
+  # 配置实体类所在，生成别名
+  type-aliases-package: com.ly.entity
+
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
