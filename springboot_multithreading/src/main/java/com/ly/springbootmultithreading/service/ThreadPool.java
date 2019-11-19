@@ -1,5 +1,6 @@
 package com.ly.springbootmultithreading.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
@@ -15,12 +16,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class ThreadPool {
 
+    @Autowired
+    private FutureThreadPoolService futureThreadPoolService;
     /**
      * @Async 注解表示该方法是异步方法，使用配置的线程池执行
      * @param i
      */
     @Async
     public void testThreadPool(int i) {
+        futureThreadPoolService.testThread (i);
         System.out.println ("线程：" + Thread.currentThread ().getName () + " 执行任务：" + i);
     }
 

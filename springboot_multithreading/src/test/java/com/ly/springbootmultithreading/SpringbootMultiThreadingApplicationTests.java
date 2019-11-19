@@ -34,11 +34,13 @@ public class SpringbootMultiThreadingApplicationTests {
     public void testThreadPool() {
         for (int i = 0; i < 50; i++) {
             threadPool.testThreadPool ((i + 1));
-            try {
-                Thread.sleep (20);
-            } catch (InterruptedException e) {
-                e.printStackTrace ();
-            }
+
+        }
+
+        try {
+            Thread.sleep (9000);
+        } catch (InterruptedException e) {
+            e.printStackTrace ();
         }
     }
 

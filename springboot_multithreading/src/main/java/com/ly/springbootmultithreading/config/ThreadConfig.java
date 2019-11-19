@@ -2,6 +2,7 @@ package com.ly.springbootmultithreading.config;
 
 import com.ly.springbootmultithreading.thread.VisiableThreadPoolExecutor;
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.AsyncConfigurer;
 import org.springframework.scheduling.annotation.EnableAsync;
@@ -33,14 +34,26 @@ public class ThreadConfig implements AsyncConfigurer {
      */
     @Override
     public Executor getAsyncExecutor() {
-        //ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor ();
 
         // 使用 VisiableThreadPoolExecutor 类用于打印线程池信息
-        ThreadPoolTaskExecutor taskExecutor = new VisiableThreadPoolExecutor ();
+        // ThreadPoolTaskExecutor taskExecutor = new VisiableThreadPoolExecutor ();
+        ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor ();
+        taskExecutor.setMaxPoolSize (20);
+        taskExecutor.setCorePoolSize (10);
+        taskExecutor.setQueueCapacity (200);
+        taskExecutor.setThreadNamePrefix ("async-service-");
+        taskExecutor.setRejectedExecutionHandler (new ThreadPoolExecutor.CallerRunsPolicy ());
+        taskExecutor.initialize ();
+        return taskExecutor;
+    }
+
+    @Bean("executor")
+    public Executor threadPoolTaskExecutor(){
+        ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor ();
         taskExecutor.setCorePoolSize (10);
         taskExecutor.setMaxPoolSize (20);
         taskExecutor.setQueueCapacity (200);
-        taskExecutor.setThreadNamePrefix ("async-service-");
+        taskExecutor.setThreadNamePrefix ("async=service=test=");
         taskExecutor.setRejectedExecutionHandler (new ThreadPoolExecutor.CallerRunsPolicy ());
         taskExecutor.initialize ();
         return taskExecutor;

@@ -18,6 +18,12 @@ import java.util.concurrent.Future;
 @Service
 public class FutureThreadPoolService {
 
+    @Async
+    public void testThread(int i){
+
+        System.out.println ("--------------线程：" + Thread.currentThread ().getName () + " 执行任务：" + i);
+    }
+
     @Async("futureThreadPool")
     public Future<String> doTask1(int i){
         System.out.println ("线程："+Thread.currentThread ().getName ()+" 正在执行 --------> "+i);
