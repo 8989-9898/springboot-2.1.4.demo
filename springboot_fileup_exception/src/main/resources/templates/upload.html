@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>文件上传</title>
+</head>
+<body>
+<h1>上传文件</h1>
+<p th:text="${fileMessage}"></p>
+<div>
+    <form action="/fileUpload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file"/><br/>
+        <input type="submit" value="上传图片"/>
+    </form>
+</div>
+<h1>下载文件</h1>
+<p th:text="${downMessage}"></p>
+<div>
+    <a href="/fileDownload">下载</a>
+</div>
+<div>
+    <video width="500" src="/fileDownload2" controls="controls" autoplay="autoplay">
+        您的浏览器不支持 video 标签。
+    </video>
+</div>
+
+<div><img src="/fileImg/1572592621175.jpg" width="70px" height="50px"></div>
+
+<h1>ftp上传文件</h1>
+<div>
+    <form action="/ftp/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file"/>
+        <input type="submit" value="上传图片"/>
+    </form>
+</div>
+<h1>ftp下载文件</h1>
+
+<div>
+    <a href="/ftp/download">从FTP下载文件</a>
+</div>
+
+
+<h1>sftp上传文件</h1>
+<div>
+    <form action="/sftpUpload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file"/>
+        <input type="submit" value="上传图片"/>
+    </form>
+</div>
+<h1>sftp下载文件</h1>
+
+<div>
+    <a href="/sftpDownload">从SFTP下载文件</a>
+</div>
+</body>
+</html>

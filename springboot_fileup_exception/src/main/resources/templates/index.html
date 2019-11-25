@@ -7,17 +7,17 @@
 <body>
 
 <h1>单一文件上传</h1>
-<form method="post" enctype="multipart/form-data" action="/file/fileUpSingle">
+<form method="post" enctype="multipart/form-data" action="/fileUpSingle">
     文件：<input type="file" name="file"><p/><input type="submit" value="上传">
 </form>
 <h1>多个文件上传</h1>
-<form method="post" enctype="multipart/form-data" action="/file/fileUpMultiple">
+<form method="post" enctype="multipart/form-data" action="/fileUpMultiple">
     文件1：<input type="file" name="files"><p/>
     文件2：<input type="file" name="files"><p/>
     <input type="submit" value="上传">
 </form>
 <h1>base64文件上传</h1>
-<form method="post" enctype="multipart/form-data" action="/file/fileBase">
+<form method="post" enctype="multipart/form-data" action="/fileBase">
     base64:<textarea name="base64" rows="10" cols="100"></textarea><p/>
     <input type="submit" value="上传">
 </form>

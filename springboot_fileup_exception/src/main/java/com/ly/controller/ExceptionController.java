@@ -2,7 +2,6 @@ package com.ly.controller;
 
 import com.ly.entity.ExceptionEntity;
 import com.ly.exception.CustomException;
-import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -10,8 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.ws.Response;
-import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 

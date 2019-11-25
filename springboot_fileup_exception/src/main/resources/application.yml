@@ -1,0 +1,47 @@
+# 取消thymeleaf缓存
+spring:
+
+# 是否支持批量上传（默认为true）
+  servlet:
+    multipart:
+      enabled: true
+# 上传时临时存放文件
+      location: e:/test1
+
+# 文件的大小阈值，超出这个阈值将写入磁盘
+      file-size-threshold: 1000
+
+# 判断是否需要懒加载文件
+      resolve-lazily: false
+      max-file-size: 100MB    # 设置打个文件最大大小
+      max-request-size: 200MB # 设置总上传数据大小
+  devtools:
+    restart:
+      enabled: true
+  thymeleaf:
+    cache: false
+    encoding: utf-8
+    mode: HTML5
+
+  mvc:
+    favicon:
+      enabled: false
+
+## FTP 配置信息
+ftp:
+  ip: 192.168.16.177
+  port: 21
+  name: flank
+  password: 123
+  path: /home/virtual/flank/upload/
+  url: http://192.168.16.177/picture/upload/
+
+## SFTP 配置信息
+sftp:
+  ip: 192.168.16.177
+  port: 22
+  name: root
+  password: linyao0408
+  path: /var/local/
+
+

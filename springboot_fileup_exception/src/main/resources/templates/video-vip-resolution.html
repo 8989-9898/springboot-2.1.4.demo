@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="x-ua-compatible" content="IE=Edge;chrome=1">
+    <title>VIP 视频解析播放</title>
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <link rel="stylesheet" href="../font-awesome/css/font-awesome.css">
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .layui-btn-radius {
+            width: 130px;
+        }
+
+        #bo {
+            z-index: 12;
+        }
+
+        #aboutproject {
+            position: absolute;
+            right: 16px;
+            top: 41px;
+        }
+
+        #tryline {
+            position: absolute;
+            right: 25%;
+            top: 14.5%;
+            width: 30%;
+            color: red;
+            font-size: 1em;
+        }
+
+        .hide {
+            display: none;
+        }
+    </style>
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../layui/layui.js"></script>
+    <script type="text/javascript">
+        var layer;
+        layui.use(['form', 'layer'], function () {
+            var form = layui.form;
+            layer = layui.layer;
+            form.on('submit(formDemo)', function (data) {
+                // 需要解析的 VIP 视频
+                var url = document.getElementById('url').value;
+                // 用于解析的网站http://
+                var selectValue = $("#element option:selected").val();
+                console.log(url);
+                console.log(selectValue);
+                $('#player').attr('src', selectValue + url);
+            });
+
+            $(function () {
+                $("#getAiQiYiVideo").click(function () {
+                    layer.open({
+                        area: ['90%', '90%'],
+                        type: 2,
+                        title: '爱奇艺搜索',
+                        content: 'http://so.iqiyi.com/'
+                    })
+                });
+
+                $("#getYouKuVideo").click(function () {
+                    layer.open({
+                        area: ['90%', '90%'],
+                        type: 2,
+                        title: '优酷搜索',
+                        content: 'http://www.soku.com/'
+                    })
+                });
+
+                $("#getTengXunVideo").click(function () {
+                    layer.open({
+                        area: ['90%', '90%'],
+                        type: 2,
+                        title: '腾讯视频搜索',
+                        content: 'https://v.qq.com/x/search/?q=搜索'
+                    })
+                });
+                $("#getSouHuVideo").click(function () {
+                    layer.open({
+                        area: ['90%', '90%'],
+                        type: 2,
+                        title: '搜狐视频搜索',
+                        content: 'https://tv.sohu.com/'
+                    })
+                });
+
+                $("#getLeShiVideo").click(function () {
+                    layer.open({
+                        area: ['90%', '90%'],
+                        type: 2,
+                        title: '乐视视频搜索',
+                        content: 'http://www.leso.cn/'
+                    })
+                });
+
+                $("#getBiLiVideo").click(function () {
+                    layer.open({
+                        area: ['90%', "90%"],
+                        type: 2,
+                        title: '华数视频搜索',
+                        content: 'https://www.wasu.cn/'
+                    })
+                });
+
+                $("#getMangGuoVideo").click(function () {
+                    layer.open({
+                        area: ['90%', '90%'],
+                        type: 2,
+                        title: '芒果TV搜索',
+                        content: 'https://www.mgtv.com/'
+                    })
+                });
+            });
+        });
+
+
+    </script>
+
+</head>
+<body>
+<div id="do">
+    <div style="display: none;" id="rocket-to-top"></div>
+    <div style="opacity: 0;display: block;" class="level-2"></div>
+    <div class="level-3"></div>
+</div>
+<div class="layui-container" style="width: 80%;">
+    <blockquote class="layui-elem-quote">
+        <div align="center">
+            <h2><font color="#00bfff">VIP 视频解析</font></h2>
+        </div>
+    </blockquote>
+    <blockquote class="layui-elem-quote">
+        <form>
+            <label class="layui-form-label">视频地址</label>
+            <div class="layui-input-block">
+                <input type="text" id="url" name="url" required lay-verify="required"
+                       placeholder="电脑使用Ctrl+V粘贴网址/手机直接长按粘贴网址" autocomplete="off" class="layui-input">
+            </div>
+            <label class="layui-form-label" style="width: auto">选择解析方式</label>
+            <select id="element" style="height:38px;width:auto;margin-top: 9px; border: 1px" required>
+                <option value="http://api.xfsub.com/index.php?url=">⑩号通用万能接口线路【稳定通用推荐】</option>
+                <option value="http://yun.mt2t.com/yun?url=">⑨号云解析接口线路【稳定通用】</option>
+                <option value="http://vip.jlsprh.com/index.php?url=">⑧号腾讯高清接口线路【稳定通用推荐】</option>
+                <option value="https://cdn.yangju.vip/k?url=">⑦号稳定万能接口线路【稳定通用推荐】</option>
+                <option value="http://2gty.com/apiurl/yun.php?url=">⑥号通用万能接口线路【稳定通用】</option>
+                <option value="http://jx.ejiafarm.com/dy.php?url=">⑤号通用万能接口线路【稳定通用】</option>
+                <option value="http://api.baiyug.cn/vip/index.php?url=">④号通用万能接口线路【稳定通用】</option>
+                <option value="http://jx.598110.com/zuida.php?url=">③号通用vip引擎接口线路【稳定通用】</option>
+                <option value="http://jx.598110.com/duo/index.php?url=">②号通用vip引擎接口线路【稳定通用】</option>
+                <option value="http://jx.598110.com/index.php?url=" selected>①号通用vip引擎接口线路【稳定通用】</option>
+            </select>
+            <button id="bf" type="button" class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">开始播放
+            </button>
+            <label id="tryline" class="layui-form-label">温馨提示：如果不能播放,换个线路试一试.</label>
+        </form>
+    </blockquote>
+    <blockquote class="layui-elem-quote">
+        快速打开下面网站,如果需要补充按钮可以在页面下方的温馨提示中找到联系方式.一起添加吧.
+        <div>
+            <button id="getAiQiYiVideo" type="button" class="layui-btn layui-btn-radius"><i
+                    class="layui-icon layui-icon-search" style="font-size: 1em;">爱奇艺搜索</i></button>
+            <button id="getYouKuVideo" type="button" class="layui-btn layui-btn-radius"><i
+                    class="layui-icon layui-icon-search" style="font-size: 1em;">优酷视频搜索</i></button>
+            <button id="getTengXunVideo" type="button" class="layui-btn layui-btn-radius">
+                <i class="layui-icon layui-icon-search" style="font-size: 1em;">腾讯视频搜索</i></button>
+            <button id="getSouHuVideo" type="button" class="layui-btn layui-btn-radius"><i
+                    class="layui-icon layui-icon-search" style="font-size: 1em;">搜狐视频搜索</i></button>
+            <button id="getLeShiVideo" type="button" class="layui-btn layui-btn-radius"><i
+                    class="layui-icon layui-icon-search" style="font-size: 1em;"></i>乐视视频搜索
+            </button>
+            <button id="getBiLiVideo" type="button" class="layui-btn layui-btn-radius"><i
+                    class="layui-icon layui-icon-search" style="font-size: 1em;">华数TV搜索</i></button>
+            <button id="getMangGuoVideo" type="button" class="layui-btn layui-btn-radius">
+                <i class="layui-icon layui-icon-search" style="font-size: 1em;">芒果TV搜索</i></button>
+        </div>
+    </blockquote>
+
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+        <div id="kj" class="panel-body">
+            <iframe src="http://jx.aeidu.cn/ks.php" id="player" width="100%" height="600px"
+                    allowTransparency="true" allowfullscreen="true" frameborder="0" scrolling="no">
+
+            </iframe>
+        </div>
+    </fieldset>
+    <blockquote class="layui-elem-quote">
+        <h3>操作指南</h3>
+        <ul style="list-style-type:none">
+            <li>第 一 步 首先进入各大视频网站,找到想要观看的VIP视频,然后复制链接（浏览器上的视频地址）</li>
+            <li>第 二 步 将复制的链接粘贴到本站播放地址,并点击开始播放</li>
+            <li>第 三 步 等待解析完成,即可免费观看VIP视频</li>
+            <li><font color="red">温馨提示：播放失败时请尝试更换其他解析方式,如果全都解析失败,下面联系我吧.</font></li>
+        </ul>
+    </blockquote>
+</div>
+</body>
+
+</html>
